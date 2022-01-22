@@ -1,4 +1,7 @@
 # rest_api_spring_boot
+
+Database Used: Redis
+Redis Used as Localhost
 Markup : <details>
            <summary>Dependency Used</summary>
   <p>Lettuce </p>
