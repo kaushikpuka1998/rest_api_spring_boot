@@ -5,7 +5,9 @@ import com.kgstrivers.androidapi.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -19,8 +21,15 @@ public class EmployeeController {
     @PostMapping("/employees")
     public Employee saveEmployee(@RequestBody Employee employee)
     {
-        employeeRepository.saveEmployee(employee);
-        return employee;
+        if(employeeRepository.findById(employee.getId())==null) //Duplicate Handle
+        {
+            employeeRepository.saveEmployee(employee);
+            return employee;
+        }else
+        {
+            return null;
+        }
+
     }
 
     @GetMapping("/employees")
@@ -35,19 +44,18 @@ public class EmployeeController {
         return employeeRepository.findById(id);
     }
 
-
     @PutMapping("/employees")
     public String update( @RequestBody Employee employee)
     {
          employeeRepository.update(employee);
-         return "Update Successfull";
+         return "Update successful";
     }
 
     @DeleteMapping("/employees/{id}")
     public String delete( @PathVariable("id") Integer id)
     {
         employeeRepository.delete(id);
-        return "Deletion Successfull";
+        return "Deletion successful";
     }
 
 }

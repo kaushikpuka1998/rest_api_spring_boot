@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Locale;
 
 
 @Repository
@@ -25,7 +26,10 @@ public class EmployeeRepository {
 
     public List<Employee> getAll()
     {
-        return hashOperations.values("EMPLOYEE");
+
+        List<Employee> employees;
+        employees = hashOperations.values("EMPLOYEE");
+        return employees;
     }
 
     public Employee findById(Integer id)
