@@ -2,7 +2,7 @@
 
 Database Used: Redis
 Redis Used as Localhost
-Markup : <details>
+ <details>
            <summary>Dependency Used</summary>
   <p>Lettuce </p>
   <p>jedis</p> 
